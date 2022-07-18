@@ -27,7 +27,7 @@
             <String fx:value="btn-warning" />
          </styleClass>
       </Button>
-      <Button layoutX="230.0" layoutY="237.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="188.0" text="Exit">
+      <Button layoutX="230.0" layoutY="237.0" mnemonicParsing="false" onAction="#exit" prefHeight="48.0" prefWidth="188.0" text="Exit">
          <styleClass>
             <String fx:value="btn" />
             <String fx:value="btn-lg" />

@@ -6,9 +6,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="626.0" styleClass="main" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sepsoh.menschbos.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sepsoh.menschbos.MenuController">
    <children>
-      <ImageView fx:id="backgroundImageView" fitHeight="417.0" fitWidth="626.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="417.0" fitWidth="626.0">
          <image>
             <Image url="@image/background2.jpg" />
          </image>
@@ -27,17 +27,13 @@
             <String fx:value="btn-warning" />
          </styleClass>
       </Button>
-      <Button layoutX="230.0" layoutY="237.0" mnemonicParsing="false" onAction="#exit" prefHeight="48.0" prefWidth="188.0" text="Exit">
+      <Button layoutX="230.0" layoutY="237.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="188.0" text="Exit">
          <styleClass>
             <String fx:value="btn" />
             <String fx:value="btn-lg" />
             <String fx:value="btn-danger" />
          </styleClass>
       </Button>
-      <ImageView fx:id="loadingImageView" fitHeight="417.0" fitWidth="626.0" visible="false">
-         <image>
-            <Image url="@image/loading.gif" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="loadingImageView" disable="true" fitHeight="417.0" fitWidth="626.0" />
    </children>
 </AnchorPane>

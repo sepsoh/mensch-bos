@@ -36,7 +36,19 @@ public class MenuController {
     @FXML
     public void playWithBots(){
 
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4), new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                Main.changeScene("playWithBots.fourPlayerBoard.fxml");
+
+            }
+        }));
+        loadingImageView.setImage(new Image(Main.class.getResource("image/loading.gif").toString()));
         loadingImageView.setVisible(true);
+
+        timeline.setCycleCount(1);
+        timeline.play();
     }
     @FXML
     public void exit(){

@@ -17,9 +17,12 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+
+
         stage.setTitle(AppData.appTitle);
         stage.setScene(scene);
         stage.setResizable(false);
+
         stage.show();
     }
 
@@ -32,7 +35,9 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
             Scene scene = new Scene(fxmlLoader.load());
             Main.stage.setTitle(title);
+            scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             Main.stage.setScene(scene);
+            Main.stage.setResizable(false);
             Main.stage.show();
             return scene;
         }catch (Exception e){

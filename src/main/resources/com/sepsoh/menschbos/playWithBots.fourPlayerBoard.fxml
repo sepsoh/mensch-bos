@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,6 +8,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sepsoh.menschbos.playwithbots.FourPlayerBoardController">
    <ImageView fitHeight="600.0" fitWidth="800.0">
@@ -408,35 +410,43 @@
          </ImageView>
       </children>
     </GridPane>
-   <ImageView fx:id="box2" fitHeight="56.0" fitWidth="57.0" layoutX="649.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="box1" fitHeight="56.0" fitWidth="57.0" layoutX="650.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@image/hide.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="box3" fitHeight="56.0" fitWidth="57.0" layoutX="703.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="box2" fitHeight="56.0" fitWidth="57.0" layoutX="713.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@image/hide.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="box1" fitHeight="56.0" fitWidth="57.0" layoutX="594.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="box0" fitHeight="56.0" fitWidth="57.0" layoutX="584.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" style="-fx-: 0.5;">
       <image>
          <Image url="@image/hide.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="box5" fitHeight="56.0" fitWidth="57.0" layoutX="649.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="box4" fitHeight="56.0" fitWidth="57.0" layoutX="650.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@image/hide.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="box6" fitHeight="56.0" fitWidth="57.0" layoutX="703.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="box5" fitHeight="56.0" fitWidth="57.0" layoutX="714.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@image/hide.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="box4" fitHeight="56.0" fitWidth="57.0" layoutX="594.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="box3" fitHeight="56.0" fitWidth="57.0" layoutX="584.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@image/hide.png" />
       </image>
    </ImageView>
-   <Label layoutX="605.0" layoutY="42.0" prefWidth="86.0" text="Box Label" />
+   <Label fx:id="helperLabel" layoutX="586.0" layoutY="33.0" prefHeight="56.0" prefWidth="177.0" text="Pick one to start ...">
+      <styleClass>
+         <String fx:value="alert" />
+         <String fx:value="alert-info" />
+      </styleClass>
+      <font>
+         <Font name="Ubuntu Bold" size="15.0" />
+      </font></Label>
+   <Label layoutX="640.0" layoutY="248.0" />
 </AnchorPane>

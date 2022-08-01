@@ -18,7 +18,7 @@ public class Game {
     boolean isGameInitialized = false;
     public Timeline mainTimeline = new Timeline();
     private Board board;
-    private HashMap<String,ImageView> characters = new HashMap<>();
+    private HashMap<String,Character> characters = new HashMap<>();
     public void init(Board board){
         isGameInitialized = true;
         this.board = board;
@@ -27,37 +27,47 @@ public class Game {
 
     public void insertChars(){
         String blue = "sunglasses";
-        String yellow = "expressionless";
+        String yellow = "money";
         String green = "zany";
-        String red = "money";
+        String red = "expressionless";
 
-        characters.put("blueChar1",getChar(blue));
-        characters.put("blueChar2",getChar(blue));
-        characters.put("blueChar3",getChar(blue));
-        characters.put("blueChar4",getChar(blue));
+        characters.put("blueChar1",getChar(blue,2,11));
+        characters.put("blueChar2",getChar(blue,1,11));
+        characters.put("blueChar3",getChar(blue,1,10));
+        characters.put("blueChar4",getChar(blue,2,10));
 
-        characters.put("yellowChar1",getChar(yellow));
-        characters.put("yellowChar2",getChar(yellow));
-        characters.put("yellowChar3",getChar(yellow));
-        characters.put("yellowChar4",getChar(yellow));
+        characters.put("yellowChar1",getChar(yellow,2,2));
+        characters.put("yellowChar2",getChar(yellow,1,2));
+        characters.put("yellowChar3",getChar(yellow,1,1));
+        characters.put("yellowChar4",getChar(yellow,2,1));
 
-        characters.put("greenChar1",getChar(green));
-        characters.put("greenChar2",getChar(green));
-        characters.put("greenChar3",getChar(green));
-        characters.put("greenChar4",getChar(green));
+        characters.put("greenChar1",getChar(green,11,2));
+        characters.put("greenChar2",getChar(green,10,2));
+        characters.put("greenChar3",getChar(green,10,1));
+        characters.put("greenChar4",getChar(green,11,1));
 
-        characters.put("redChar1",getChar(red));
-        characters.put("redChar2",getChar(red));
-        characters.put("redChar3",getChar(red));
-        characters.put("redChar4",getChar(red));
+        characters.put("redChar1",getChar(red,11,11));
+        characters.put("redChar2",getChar(red,10,11));
+        characters.put("redChar3",getChar(red,10,10));
+        characters.put("redChar4",getChar(red,11,10));
 
-        characters.forEach((s, img) -> {
-            img.setFitHeight(35);
-            img.setFitWidth(35);
+        characters.forEach((name, character) -> {
+            character.getImg().setFitHeight(35);
+            character.getImg().setFitWidth(35);
+            character.getImg().setOnMouseClicked(event -> clickedOn(name));
+            changeCharPosition(name,character.getColumnIndex(),character.getRowIndex());
+
         });
     }
-    private ImageView getChar(String charName){
-        return new ImageView(new Image(Main.class.getResource("image/character/"+charName+".png").toString()));
+
+    private void clickedOn(String on)
+    {
+        System.out.println("cliced on : " +on);
+    }
+
+
+    private Character getChar(String charName,int columnIndex,int rowIndex){
+        return new Character(new ImageView(new Image(Main.class.getResource("image/character/"+charName+".png").toString())),columnIndex,rowIndex);
     }
 
     public void start(){
@@ -76,10 +86,9 @@ public class Game {
 
     }
     public void changeCharPosition(String charName,int columnIndex,int rowIndex){
-        ImageView img = characters.get(charName);
-        board.getGridPane().add(img,1,11);
+        ImageView img = characters.get(charName).getImg();
         board.getGridPane().getChildren().remove(img);
-        board.getGridPane().add(img,2,11);
+        board.getGridPane().add(img,columnIndex,rowIndex);
         GridPane.setHalignment(img, HPos.CENTER);
     }
     public void changeHelperLabel(){

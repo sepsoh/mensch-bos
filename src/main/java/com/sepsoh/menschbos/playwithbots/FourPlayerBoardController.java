@@ -3,9 +3,13 @@ package com.sepsoh.menschbos.playwithbots;
 
 import com.sepsoh.menschbos.Main;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,12 +21,13 @@ public class FourPlayerBoardController implements Board {
     ImageView box0,box1,box2,box3,box4,box5;
     @FXML
     Label helperLabel;
-
-
+    @FXML
+    GridPane gridPane;
     public void initialize(){
         Game game = new Game();
         game.init(this);
         game.start();
+
 
 
     }
@@ -44,4 +49,10 @@ public class FourPlayerBoardController implements Board {
     public Label getHelperLabel() {
         return helperLabel;
     }
+    @Override
+    public GridPane getGridPane(){
+        return gridPane;
+    }
+
+
 }

@@ -18,7 +18,6 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
 
-
         stage.setTitle(AppData.appTitle);
         stage.setScene(scene);
         stage.setResizable(false);

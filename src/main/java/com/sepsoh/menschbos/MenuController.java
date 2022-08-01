@@ -23,7 +23,6 @@ public class MenuController {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4), event -> loadingImageView.setVisible(false)));
         loadingImageView.setImage(new Image(Main.class.getResource("image/loading.gif").toString()));
         loadingImageView.setVisible(true);
-
         timeline.setCycleCount(1);
         timeline.play();
 

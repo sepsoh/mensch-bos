@@ -4,6 +4,7 @@ import com.sepsoh.menschbos.data.AppData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class Main extends Application {
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
 
         stage.setTitle(AppData.appTitle);
+        stage.getIcons().add(new Image(AppData.appIcon));
         stage.setScene(scene);
         stage.setResizable(false);
 
@@ -34,6 +36,7 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlPath));
             Scene scene = new Scene(fxmlLoader.load());
             Main.stage.setTitle(title);
+            Main.stage.getIcons().add(new Image(AppData.appIcon));
             scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
             Main.stage.setScene(scene);
             Main.stage.setResizable(false);

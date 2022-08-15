@@ -9,6 +9,7 @@ public class Character {
     private ImageView img;
     private String charName;
 
+
     private Path path ;
 
     public static HashMap<String,Character> characters = new HashMap<>();
@@ -25,10 +26,9 @@ public class Character {
         return img;
     }
 
-    public Position getPosition() {
-        return path.getCurrentPosition();
+
+    public Path getPath() {
+        return path;
     }
-    public Position getNextPosition(){
-        return path.getNextPosition();
-    }
+
 }

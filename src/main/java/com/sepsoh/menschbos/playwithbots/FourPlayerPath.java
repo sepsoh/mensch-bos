@@ -1,122 +1,226 @@
+
 package com.sepsoh.menschbos.playwithbots;
 
 
+import com.sepsoh.menschbos.mensch.Character;
+import com.sepsoh.menschbos.mensch.Path;
+import com.sepsoh.menschbos.mensch.Position;
+
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class FourPlayerPath implements Path{
+public class FourPlayerPath implements Path {
 
-    private final ArrayList<Position> path = new ArrayList<>();
-    private final ArrayList<Position> target = new ArrayList<>();
-    private final ArrayList<Position> base = new ArrayList<>();
+    private final ArrayList<Position> route = new ArrayList<>();
+    private final ArrayList<Position> blueBase      = new ArrayList<>();
+    private final ArrayList<Position> yellowBase    = new ArrayList<>();
+    private final ArrayList<Position> greenBase     = new ArrayList<>();
+    private final ArrayList<Position> redBase       = new ArrayList<>();
 
+    private final ArrayList<Position> bluePath      = new ArrayList<>();
+    private final ArrayList<Position> yellowPath    = new ArrayList<>();
+    private final ArrayList<Position> greenPath     = new ArrayList<>();
+    private final ArrayList<Position> redPath       = new ArrayList<>();
+
+    private final ArrayList<Position> blueTarget      = new ArrayList<>();
+    private final ArrayList<Position> yellowTarget    = new ArrayList<>();
+    private final ArrayList<Position> greenTarget     = new ArrayList<>();
+    private final ArrayList<Position> redTarget       = new ArrayList<>();
+
+
+    private final ArrayList<Position> blueRoute      = new ArrayList<>();
+    private final ArrayList<Position> yellowRoute    = new ArrayList<>();
+    private final ArrayList<Position> greenRoute     = new ArrayList<>();
+    private final ArrayList<Position> redRoute       = new ArrayList<>();
 
     private int index = 0;
-    private String name;
-    private int indexOfName;
-    public FourPlayerPath(String name, int indexOfName){
-        this.name = name;
-        this.indexOfName = indexOfName;
-        //blue
-        path.add(new Position(5,11));
-        path.add(new Position(5,10));
-        path.add(new Position(5,9));
-        path.add(new Position(5,8));
-        path.add(new Position(5,7));
-        path.add(new Position(4,7));
-        path.add(new Position(3,7));
-        path.add(new Position(2,7));
-        path.add(new Position(1,7));
-        path.add(new Position(1,6));
-        //yellow
-        path.add(new Position(1,5));
-        path.add(new Position(2,5));
-        path.add(new Position(3,5));
-        path.add(new Position(4,5));
-        path.add(new Position(5,5));
-        path.add(new Position(5,4));
-        path.add(new Position(5,3));
-        path.add(new Position(5,2));
-        path.add(new Position(5,1));
-        path.add(new Position(6,1));
-        //green
-        path.add(new Position(7,1));
-        path.add(new Position(7,2));
-        path.add(new Position(7,3));
-        path.add(new Position(7,4));
-        path.add(new Position(7,5));
-        path.add(new Position(8,5));
-        path.add(new Position(9,5));
-        path.add(new Position(10,5));
-        path.add(new Position(11,5));
-        path.add(new Position(11,6));
-        //red
-        path.add(new Position(11,7));
-        path.add(new Position(10,7));
-        path.add(new Position(9,7));
-        path.add(new Position(8,7));
-        path.add(new Position(7,7));
-        path.add(new Position(7,8));
-        path.add(new Position(7,9));
-        path.add(new Position(7,10));
-        path.add(new Position(7,11));
-        path.add(new Position(6,11));
-        //blue
-        base.add(new Position(2,11));
-        base.add(new Position(1,11));
-        base.add(new Position(1,10));
-        base.add(new Position(2,10));
-        //yellow
-        base.add(new Position(2,2));
-        base.add(new Position(1,2));
-        base.add(new Position(1,1));
-        base.add(new Position(2,1));
-        //green
-        base.add(new Position(11,2));
-        base.add(new Position(10,2));
-        base.add(new Position(10,1));
-        base.add(new Position(11,1));
-        //red
-        base.add(new Position(11,11));
-        base.add(new Position(10,11));
-        base.add(new Position(10,10));
-        base.add(new Position(11,10));
-        //blue
-        target.add(new Position(6,10));
-        target.add(new Position(6,9));
-        target.add(new Position(6,8));
-        target.add(new Position(6,7));
-        //yellow
-        target.add(new Position(2,6));
-        target.add(new Position(3,6));
-        target.add(new Position(4,6));
-        target.add(new Position(5,6));
-        //green
-        target.add(new Position(6,2));
-        target.add(new Position(6,3));
-        target.add(new Position(6,4));
-        target.add(new Position(6,5));
-        //red
-        target.add(new Position(10,6));
-        target.add(new Position(9,6));
-        target.add(new Position(8,6));
-        target.add(new Position(7,6));
+    private int id; //blue : 0-3  ,yellow : 4-7  ,green : 8-11  ,red : 12-15
+
+    public FourPlayerPath(int id){
+        this.id = id;
+        this.index = id%4;  //Base Cell init
+
+        //blue's base
+        blueBase.add(new Position(2,11));
+        blueBase.add(new Position(1,11));
+        blueBase.add(new Position(1,10));
+        blueBase.add(new Position(2,10));
+        //yellow's base
+        yellowBase.add(new Position(2,2));
+        yellowBase.add(new Position(1,2));
+        yellowBase.add(new Position(1,1));
+        yellowBase.add(new Position(2,1));
+        //green's base
+        greenBase.add(new Position(11,2));
+        greenBase.add(new Position(10,2));
+        greenBase.add(new Position(10,1));
+        greenBase.add(new Position(11,1));
+        //red's base
+        redBase.add(new Position(11,11));
+        redBase.add(new Position(10,11));
+        redBase.add(new Position(10,10));
+        redBase.add(new Position(11,10));
+        //blue's path
+        bluePath.add(new Position(5,11));
+        bluePath.add(new Position(5,10));
+        bluePath.add(new Position(5,9));
+        bluePath.add(new Position(5,8));
+        bluePath.add(new Position(5,7));
+        bluePath.add(new Position(4,7));
+        bluePath.add(new Position(3,7));
+        bluePath.add(new Position(2,7));
+        bluePath.add(new Position(1,7));
+        bluePath.add(new Position(1,6));
+        //yellow's path
+        yellowPath.add(new Position(1,5));
+        yellowPath.add(new Position(2,5));
+        yellowPath.add(new Position(3,5));
+        yellowPath.add(new Position(4,5));
+        yellowPath.add(new Position(5,5));
+        yellowPath.add(new Position(5,4));
+        yellowPath.add(new Position(5,3));
+        yellowPath.add(new Position(5,2));
+        yellowPath.add(new Position(5,1));
+        yellowPath.add(new Position(6,1));
+        //green's path
+        greenPath.add(new Position(7,1));
+        greenPath.add(new Position(7,2));
+        greenPath.add(new Position(7,3));
+        greenPath.add(new Position(7,4));
+        greenPath.add(new Position(7,5));
+        greenPath.add(new Position(8,5));
+        greenPath.add(new Position(9,5));
+        greenPath.add(new Position(10,5));
+        greenPath.add(new Position(11,5));
+        greenPath.add(new Position(11,6));
+        //red's path
+        redPath.add(new Position(11,7));
+        redPath.add(new Position(10,7));
+        redPath.add(new Position(9,7));
+        redPath.add(new Position(8,7));
+        redPath.add(new Position(7,7));
+        redPath.add(new Position(7,8));
+        redPath.add(new Position(7,9));
+        redPath.add(new Position(7,10));
+        redPath.add(new Position(7,11));
+        redPath.add(new Position(6,11));
+        //blue's target
+        blueTarget.add(new Position(6,10));
+        blueTarget.add(new Position(6,9));
+        blueTarget.add(new Position(6,8));
+        blueTarget.add(new Position(6,7));
+        //yellow's target
+        yellowTarget.add(new Position(2,6));
+        yellowTarget.add(new Position(3,6));
+        yellowTarget.add(new Position(4,6));
+        yellowTarget.add(new Position(5,6));
+        //green's target
+        greenTarget.add(new Position(6,2));
+        greenTarget.add(new Position(6,3));
+        greenTarget.add(new Position(6,4));
+        greenTarget.add(new Position(6,5));
+        //red's target
+        redTarget.add(new Position(10,6));
+        redTarget.add(new Position(9,6));
+        redTarget.add(new Position(8,6));
+        redTarget.add(new Position(7,6));
 
 
 
+
+        // Routes :
+
+        blueRoute.addAll(blueBase);
+        blueRoute.addAll(bluePath);
+        blueRoute.addAll(yellowPath);
+        blueRoute.addAll(greenPath);
+        blueRoute.addAll(redPath);
+        blueRoute.addAll(blueTarget);
+
+        yellowRoute.addAll(yellowBase);
+        yellowRoute.addAll(yellowPath);
+        yellowRoute.addAll(greenPath);
+        yellowRoute.addAll(redPath);
+        yellowRoute.addAll(bluePath);
+        yellowRoute.addAll(yellowTarget);
+
+        greenRoute.addAll(greenBase);
+        greenRoute.addAll(greenPath);
+        greenRoute.addAll(redPath);
+        greenRoute.addAll(bluePath);
+        greenRoute.addAll(yellowPath);
+        greenRoute.addAll(greenTarget);
+
+        redRoute.addAll(redBase);
+        redRoute.addAll(redPath);
+        redRoute.addAll(bluePath);
+        redRoute.addAll(yellowPath);
+        redRoute.addAll(greenPath);
+        redRoute.addAll(redTarget);
+
+
+        // Removing unuseful arraylists
 
     }
 
+
+    private ArrayList<Position> getRoute(){
+        if(id/4 == 0)
+            return blueRoute;
+        else if(id/4 ==1)
+            return yellowRoute;
+        else if(id/4 ==2)
+            return greenRoute;
+        else if(id/4 ==3)
+            return redRoute;
+
+        return null;
+
+    }
+    private boolean isCellFree(int length){
+        int indexCopy = index;
+        int newIndex ;
+
+        for(int i= 0 ;i<length; i++)
+            indexUp();
+        newIndex = index;
+        index = indexCopy;
+        AtomicBoolean ret = new AtomicBoolean(false);
+        Character.characters.forEach((a, chr)-> {
+            if(chr.getPath().getCurrentPosition().isEqual(getRoute().get(newIndex)));
+                ret.set(true);
+        });
+        return ret.get();
+    }
+
+    public ArrayList<Position> getPosition(int length){
+        ArrayList<Position> ret = new ArrayList<>();
+        if(isCellFree(length)) {
+            for (int i = 0; i < length; i++)
+                ret.add(getNextPosition());
+        }
+            return ret;
+    }
     public Position getNextPosition() {
-            if (name.startsWith("blue")){
-                if(index<40)
-                    return path.get(index++);
-                else
-                    return null;
-            }
-            return getCurrentPosition();
+
+        return getRoute().get(indexUp());
     }
+
+    @Override
+    public int getIndex() {
+        return index;
+    }
+    private int indexUp(){
+        if(index<4)
+            return index =4;
+        else if(index<47)
+            return ++index;
+        return index;
+
+    }
+
     public Position getCurrentPosition(){
-        return base.get(indexOfName);
+        return getRoute().get(index);
 
     }
 

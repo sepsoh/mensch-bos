@@ -14,41 +14,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Game {
     private int turn  = 1;
-    boolean isGameInitialized = false;
+
     public Timeline mainTimeline = new Timeline();
     private Board board;
-    public void init(Board board){
-        isGameInitialized = true;
+
+    public void start(Board board){
         this.board = board;
-        insertChars();
-    }
 
-    public void insertChars(){
-
-        String blue = "sunglasses";
-        String yellow = "money";
-        String green = "zany";
-        String red = "expressionless";
-
-        buildChar("blueChar1",blue);
-        buildChar("blueChar2",blue);
-        buildChar("blueChar3",blue);
-        buildChar("blueChar4",blue);
-
-        buildChar("yellowChar1",yellow);
-        buildChar("yellowChar2",yellow);
-        buildChar("yellowChar3",yellow);
-        buildChar("yellowChar4",yellow);
-
-        buildChar("greenChar1",green);
-        buildChar("greenChar2",green);
-        buildChar("greenChar3",green);
-        buildChar("greenChar4",green);
-
-        buildChar("redChar1",red);
-        buildChar("redChar2",red);
-        buildChar("redChar3",red);
-        buildChar("redChar4",red);
+        mainTimeline.getKeyFrames().addAll(new KeyFrame(Duration.millis(200), event -> next()));
+        mainTimeline.setCycleCount(-1);
+        mainTimeline.play();
 
         Character.characters.forEach((charName, character) -> {
             character.getImg().setFitHeight(35);
@@ -63,7 +38,9 @@ public class Game {
 
 
         });
+
     }
+
 
     private void clickedOn(String on)
     {
@@ -71,19 +48,8 @@ public class Game {
     }
 
 
-    private Character buildChar(String name,String charName){
+    public Character buildChar(String name,String charName){
         return new Character(name,charName,new ImageView(new Image(Main.class.getResource("image/character/"+charName+".png").toString())));
-    }
-
-    public void start(){
-        if(isGameInitialized) {
-            mainTimeline.getKeyFrames().addAll(new KeyFrame(Duration.millis(200), event -> next()));
-            mainTimeline.setCycleCount(-1);
-            mainTimeline.play();
-        }else{
-            System.out.println("you must first call init method");
-        }
-
     }
 
     public void hideAllBoxes() {

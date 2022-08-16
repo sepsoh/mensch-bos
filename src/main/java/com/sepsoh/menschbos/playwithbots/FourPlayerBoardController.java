@@ -1,18 +1,14 @@
 package com.sepsoh.menschbos.playwithbots;
 
 
-import com.sepsoh.menschbos.Main;
+import com.sepsoh.menschbos.mensch.Board;
+import com.sepsoh.menschbos.mensch.Game;
 import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FourPlayerBoardController implements Board {
 
@@ -25,8 +21,33 @@ public class FourPlayerBoardController implements Board {
     GridPane gridPane;
     public void initialize(){
         Game game = new Game();
-        game.init(this);
-        game.start();
+
+        String blue = "sunglasses";
+        String yellow = "money";
+        String green = "zany";
+        String red = "expressionless";
+
+        game.buildChar("blueChar1",blue);
+        game.buildChar("blueChar2",blue);
+        game.buildChar("blueChar3",blue);
+        game.buildChar("blueChar4",blue);
+
+        game.buildChar("yellowChar1",yellow);
+        game.buildChar("yellowChar2",yellow);
+        game.buildChar("yellowChar3",yellow);
+        game.buildChar("yellowChar4",yellow);
+
+        game.buildChar("greenChar1",green);
+        game.buildChar("greenChar2",green);
+        game.buildChar("greenChar3",green);
+        game.buildChar("greenChar4",green);
+
+        game.buildChar("redChar1",red);
+        game.buildChar("redChar2",red);
+        game.buildChar("redChar3",red);
+        game.buildChar("redChar4",red);
+
+        game.start(this,"blue");
 
 
 

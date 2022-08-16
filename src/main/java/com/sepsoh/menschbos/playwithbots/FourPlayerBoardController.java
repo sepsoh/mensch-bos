@@ -47,7 +47,7 @@ public class FourPlayerBoardController implements Board {
         game.buildChar("redChar3",red);
         game.buildChar("redChar4",red);
 
-        game.start(this,"blue");
+        game.start(this,"blue",200);
 
 
 

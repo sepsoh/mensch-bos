@@ -1,4 +1,4 @@
-package com.sepsoh.menschbos.playwithbots;
+package com.sepsoh.menschbos.mensch;
 
 import com.sepsoh.menschbos.Main;
 import javafx.animation.KeyFrame;
@@ -59,10 +59,10 @@ public class Game {
                 character.getImg().setOnMouseEntered(event -> character.getImg().setOpacity(0.5));
                 character.getImg().setOnMouseExited(event -> character.getImg().setOpacity(1));
             }
-            changeCharPosition(charName,character.getPosition());
+            changeCharPosition(charName,character.getPath().getCurrentPosition());
+
 
         });
-        //changeCharPosition("redChar1", buildChar());
     }
 
     private void clickedOn(String on)
@@ -77,7 +77,7 @@ public class Game {
 
     public void start(){
         if(isGameInitialized) {
-            mainTimeline.getKeyFrames().addAll(new KeyFrame(Duration.seconds(3), event -> next()));
+            mainTimeline.getKeyFrames().addAll(new KeyFrame(Duration.millis(200), event -> next()));
             mainTimeline.setCycleCount(-1);
             mainTimeline.play();
         }else{
@@ -91,10 +91,14 @@ public class Game {
 
     }
     public void changeCharPosition(String charName,Position pos){
-        ImageView img = Character.characters.get(charName).getImg();
-        board.getGridPane().getChildren().remove(img);
-        board.getGridPane().add(img,pos.getColumn(),pos.getRow());
-        GridPane.setHalignment(img, HPos.CENTER);
+        if(pos != null) {
+            ImageView img = Character.characters.get(charName).getImg();
+            board.getGridPane().getChildren().remove(img);
+            board.getGridPane().add(img, pos.getColumn(), pos.getRow());
+            GridPane.setHalignment(img, HPos.CENTER);
+        }else{
+            System.out.println("position is null");
+        }
     }
     public void changeHelperLabel(){
         if(turn%4 ==1){
@@ -135,6 +139,8 @@ public class Game {
                         board.getBoxes().forEach(box2 -> box2.setOnMouseEntered(t2 -> box2.setStyle("-fx-opacity:1;")));
                         mainTimeline.setDelay(new Duration(3000));
                         mainTimeline.play();
+
+
                     }
                 });
 
@@ -144,7 +150,10 @@ public class Game {
             System.out.println("dont be executed");
 
         }
-        changeCharPosition("blueChar1",Character.characters.get("blueChar1").getNextPosition());
+        changeCharPosition("blueChar1",Character.characters.get("blueChar1").getPath().getPosition(5).get(4));
+        //changeCharPosition("blueChar2",Character.characters.get("blueChar2").getPath().getNextPosition());
+
+
 
         turn++;
 

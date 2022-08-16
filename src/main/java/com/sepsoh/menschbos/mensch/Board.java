@@ -1,4 +1,4 @@
-package com.sepsoh.menschbos.playwithbots;
+package com.sepsoh.menschbos.mensch;
 
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;

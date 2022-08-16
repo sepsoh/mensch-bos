@@ -1,8 +1,8 @@
-package com.sepsoh.menschbos.playwithbots;
+package com.sepsoh.menschbos.mensch;
 
+import com.sepsoh.menschbos.playwithbots.FourPlayerPath;
 import javafx.scene.image.ImageView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Character {
@@ -16,7 +16,7 @@ public class Character {
     public Character(String name,String charName,ImageView img) {
         this.img = img;
         this.charName = charName;
-        this.path =  new FourPlayerPath(name,characters.size());
+        this.path =  new FourPlayerPath(characters.size());
         Character.characters.put(name,this);
     }
     public String getCharName() {

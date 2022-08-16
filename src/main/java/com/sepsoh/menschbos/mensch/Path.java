@@ -1,4 +1,4 @@
-package com.sepsoh.menschbos.playwithbots;
+package com.sepsoh.menschbos.mensch;
 
 import java.util.ArrayList;
 

@@ -18,10 +18,10 @@ public class Game {
     public Timeline mainTimeline = new Timeline();
     private Board board;
 
-    public void start(Board board, String yourChar){
+    public void start(Board board, String yourChar,int gameSpeedMils){
         this.board = board;
 
-        mainTimeline.getKeyFrames().addAll(new KeyFrame(Duration.millis(200), event -> next()));
+        mainTimeline.getKeyFrames().addAll(new KeyFrame(Duration.millis(gameSpeedMils), event -> next()));
         mainTimeline.setCycleCount(-1);
         mainTimeline.play();
 
@@ -36,27 +36,20 @@ public class Game {
             }
             changeCharPosition(charName,character.getPath().getCurrentPosition());
 
-
         });
 
     }
-
-
-    private void clickedOn(String on)
-    {
+    private void clickedOn(String on) {
         System.out.println("cliced on : " +on);
     }
-
-
     public Character buildChar(String name,String charName){
         return new Character(name,charName,new ImageView(new Image(Main.class.getResource("image/character/"+charName+".png").toString())));
     }
-
-    public void hideAllBoxes() {
+    private void hideAllBoxes() {
         board.getBoxes().forEach(box->box.setImage(new Image(Main.class.getResource("image/hide.png").toString())));
 
     }
-    public void changeCharPosition(String charName,Position pos){
+    private void changeCharPosition(String charName,Position pos){
         if(pos != null) {
             ImageView img = Character.characters.get(charName).getImg();
             board.getGridPane().getChildren().remove(img);
@@ -66,7 +59,7 @@ public class Game {
             System.out.println("position is null");
         }
     }
-    public void changeHelperLabel(){
+    private void changeHelperLabel(){
         if(turn%4 ==1){
             board.getHelperLabel().getStyleClass().setAll("alert","alert-info");
             board.getHelperLabel().setText("It`s Your Turn ...");
@@ -81,7 +74,7 @@ public class Game {
             board.getHelperLabel().setText("Red`s Turn ...");
         }
     }
-    public void next(){
+    private void next(){
         hideAllBoxes();
         changeHelperLabel();
 
@@ -125,7 +118,7 @@ public class Game {
 
 
     }
-    public void botsTurn(){
+    private void botsTurn(){
         //ImageView box = boxes.get(ThreadLocalRandom.current().nextInt(0, 5 + 1));
         //box.setImage(new Image(Main.class.getResource("image/dice" + dice[boxes.indexOf(box)] + ".png").toString()));
 

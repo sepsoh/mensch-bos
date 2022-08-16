@@ -24,4 +24,12 @@ public class Position {
         this.rowIndex = rowIndex;
     }
     public Position(){}
+
+
+    public boolean isEqual(Position obj) {
+        if(this.columnIndex == obj.columnIndex && this.rowIndex == obj.rowIndex)
+            return true;
+        return false;
+    }
+
 }

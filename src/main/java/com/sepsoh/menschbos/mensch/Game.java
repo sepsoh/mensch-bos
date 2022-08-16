@@ -18,7 +18,7 @@ public class Game {
     public Timeline mainTimeline = new Timeline();
     private Board board;
 
-    public void start(Board board){
+    public void start(Board board, String yourChar){
         this.board = board;
 
         mainTimeline.getKeyFrames().addAll(new KeyFrame(Duration.millis(200), event -> next()));
@@ -28,7 +28,7 @@ public class Game {
         Character.characters.forEach((charName, character) -> {
             character.getImg().setFitHeight(35);
             character.getImg().setFitWidth(35);
-            if(charName.equals("blueChar1") || charName.equals("blueChar2") || charName.equals("blueChar3") || charName.equals("blueChar4"))
+            if(charName.startsWith(yourChar))
             {
                 character.getImg().setOnMouseClicked(event -> clickedOn(charName));
                 character.getImg().setOnMouseEntered(event -> character.getImg().setOpacity(0.5));

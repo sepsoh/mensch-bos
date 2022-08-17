@@ -25,17 +25,15 @@ public class Game {
         mainTimeline.setCycleCount(-1);
         mainTimeline.play();
 
-        Character.characters.forEach((charName, character) -> {
-            character.getImg().setFitHeight(35);
-            character.getImg().setFitWidth(35);
-            if(charName.startsWith(yourChar))
-            {
-                character.getImg().setOnMouseClicked(event -> clickedOn(charName));
-                character.getImg().setOnMouseEntered(event -> character.getImg().setOpacity(0.5));
-                character.getImg().setOnMouseExited(event -> character.getImg().setOpacity(1));
+        Character.characters.forEach((charName, chr) -> {
+            // set yourChar onClick :
+            if(charName.startsWith(yourChar)) {
+                chr.getImg().setOnMouseClicked(event -> clickedOn(charName));
+                chr.getImg().setOnMouseEntered(event -> chr.getImg().setOpacity(0.5));
+                chr.getImg().setOnMouseExited(event -> chr.getImg().setOpacity(1));
             }
-            changeCharPosition(charName,character.getPath().getCurrentPosition());
-
+            //initialize first place :
+            changeCharPosition(charName,chr.getPath().getCurrentPosition());
         });
 
     }
@@ -43,7 +41,10 @@ public class Game {
         System.out.println("cliced on : " +on);
     }
     public Character buildChar(String name,String charName){
-        return new Character(name,charName,new ImageView(new Image(Main.class.getResource("image/character/"+charName+".png").toString())));
+        Character chr =  new Character(name,charName,new ImageView(new Image(Main.class.getResource("image/character/"+charName+".png").toString())));
+        chr.getImg().setFitHeight(35);
+        chr.getImg().setFitWidth(35);
+        return chr;
     }
     private void hideAllBoxes() {
         board.getBoxes().forEach(box->box.setImage(new Image(Main.class.getResource("image/hide.png").toString())));

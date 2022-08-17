@@ -128,184 +128,184 @@
                <Image url="@image/yellow.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="11">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="11">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="8">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="8">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="2">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="2">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="3">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="3">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="4">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="4">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="8" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="9" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="9" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="10" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="10" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="11" GridPane.rowIndex="5">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="11" GridPane.rowIndex="5">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="11" GridPane.rowIndex="6">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="11" GridPane.rowIndex="6">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="10" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="10" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="9" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="9" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="8" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="7">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="7">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="8">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="8">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="9">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="9">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="10">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="10">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
-         <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="11">
+         <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="11">
             <image>
-               <Image url="@image/black.png" />
+               <Image url="@image/cell.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="1">

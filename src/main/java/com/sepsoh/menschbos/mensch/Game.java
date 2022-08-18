@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -87,7 +88,24 @@ public class Game {
             board.getHelperLabel().setText("Red`s Turn ...");
         }
     }
-    private Integer[] dice(){
+    private void changeHelperLabel(String msg){
+        if(turn%4 ==0){
+            board.getHelperLabel().getStyleClass().setAll("alert","alert-info");
+            board.getHelperLabel().setText(msg);
+        } else if (turn%4 ==1) {
+            board.getHelperLabel().getStyleClass().setAll("alert","alert-warning");
+            board.getHelperLabel().setText(msg);
+        } else if (turn%4 ==2) {
+            board.getHelperLabel().getStyleClass().setAll("alert","alert-success");
+            board.getHelperLabel().setText(msg);
+        } else if (turn%4 ==3) {
+            board.getHelperLabel().getStyleClass().setAll("alert","alert-danger");
+            board.getHelperLabel().setText(msg);
+        }
+    }
+
+
+        private Integer[] dice(){
         Integer[] dice = {1,2,3,4,5,6};
         List<Integer> intList = Arrays.asList(dice);
         Collections.shuffle(intList);
@@ -107,21 +125,24 @@ public class Game {
             botsTurn();
 
 
-        //changeCharPosition("blueChar2",Character.characters.get("blueChar2").getPath().getNextPosition());
-
+        System.out.println("Turn : "+turn);
 
     }
     private void botsTurn(){
         ImageView box = board.getBoxes().get(ThreadLocalRandom.current().nextInt(0, 5 + 1));
         int dice = dice()[board.getBoxes().indexOf(box)];
         hasGift = dice == 6;
+
         box.setImage(new Image(Main.class.getResource("image/dice" + dice + ".png").toString()));
 
 
+        Character chr = Character.characters.get(ThreadLocalRandom.current().nextInt((turn%4)*4,(turn%4)*4+4));
+        ArrayList<Position> pos = chr.getPath().getPosition(dice);
+        if(!pos.isEmpty())
+            changeCharPosition(chr,pos.get(pos.size()-1));
 
-        //Character chr = (Character) Character.characters.values().toArray()[ThreadLocalRandom.current().nextInt((turn%4)*4,(turn%4)*4+4)];
-        //changeCharPosition(chr.getCharName(),);
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),event -> next()));
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),event ->  next() ));
         timeline.setCycleCount(1);
         timeline.play();
         }

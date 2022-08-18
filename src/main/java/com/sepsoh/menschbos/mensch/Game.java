@@ -3,6 +3,8 @@ package com.sepsoh.menschbos.mensch;
 import com.sepsoh.menschbos.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,20 +12,17 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Game {
-    private int turn  = 1;
+    private int turn  = 0;
 
-    public Timeline mainTimeline = new Timeline();
     private Board board;
+    private int yourDiceNumber = 0;
 
     public void start(Board board, String yourChar,int gameSpeedMils){
         this.board = board;
-
-        mainTimeline.getKeyFrames().addAll(new KeyFrame(Duration.millis(gameSpeedMils), event -> next()));
-        mainTimeline.setCycleCount(-1);
-        mainTimeline.play();
 
         Character.characters.forEach((charName, chr) -> {
             // set yourChar onClick :
@@ -36,9 +35,22 @@ public class Game {
             changeCharPosition(charName,chr.getPath().getCurrentPosition());
         });
 
+        next();
+
+
+
+
     }
     private void clickedOn(String on) {
-        System.out.println("cliced on : " +on);
+        if(yourDiceNumber != 0) {
+            ArrayList<Position> pos = Character.characters.get(on).getPath().getPosition(yourDiceNumber);
+            if(!pos.isEmpty())
+                changeCharPosition(on,pos.get(pos.size()-1));
+
+            yourDiceNumber = 0;
+            next();
+        }
+
     }
     public Character buildChar(String name,String charName){
         Character chr =  new Character(name,charName,new ImageView(new Image(Main.class.getResource("image/character/"+charName+".png").toString())));
@@ -75,54 +87,53 @@ public class Game {
             board.getHelperLabel().setText("Red`s Turn ...");
         }
     }
-    private void next(){
-        hideAllBoxes();
-        changeHelperLabel();
-
-        Integer dice[] = {1,2,3,4,5,6};
+    private Integer[] dice(){
+        Integer[] dice = {1,2,3,4,5,6};
         List<Integer> intList = Arrays.asList(dice);
         Collections.shuffle(intList);
         intList.toArray(dice);
-
-        if(turn%4==1) {
-            AtomicBoolean isPickedItem = new AtomicBoolean(false);
-            board.getBoxes().forEach(box -> {
-                box.setOnMouseEntered(t -> box.setStyle("-fx-opacity:0.5;"));
-                box.setOnMouseExited(t -> box.setStyle("-fx-opacity:1;"));
-                mainTimeline.pause();
-                box.setOnMouseClicked(t -> {
-                    if (!isPickedItem.get()) {
-                        isPickedItem.set(true);
-                        box.setImage(new Image(Main.class.getResource("image/dice" + dice[board.getBoxes().indexOf(box)] + ".png").toString()));
-
-                        // remove reaction when user was picked an item
-                        board.getBoxes().forEach(box2 -> box2.setOnMouseEntered(t2 -> box2.setStyle("-fx-opacity:1;")));
-                        mainTimeline.setDelay(new Duration(3000));
-                        mainTimeline.play();
-
-
-                    }
-                });
-
-            });
-
-        }else{
-            System.out.println("dont be executed");
-
-        }
-        changeCharPosition("blueChar1",Character.characters.get("blueChar1").getPath().getPosition(5).get(4));
-        //changeCharPosition("blueChar2",Character.characters.get("blueChar2").getPath().getNextPosition());
-
-
-
+        return dice;
+    }
+    private void next(){
         turn++;
+        hideAllBoxes();
+        changeHelperLabel();
+
+        if(turn%4==1)
+            yourTurn();
+        else
+            botsTurn();
+
+
+        //changeCharPosition("blueChar2",Character.characters.get("blueChar2").getPath().getNextPosition());
 
 
     }
     private void botsTurn(){
-        //ImageView box = boxes.get(ThreadLocalRandom.current().nextInt(0, 5 + 1));
-        //box.setImage(new Image(Main.class.getResource("image/dice" + dice[boxes.indexOf(box)] + ".png").toString()));
+        ImageView box = board.getBoxes().get(ThreadLocalRandom.current().nextInt(0, 5 + 1));
+        int dice = dice()[board.getBoxes().indexOf(box)];
+        box.setImage(new Image(Main.class.getResource("image/dice" + dice + ".png").toString()));
+        //changeCharPosition(Character.characters.);
 
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),event -> next()));
+        timeline.setCycleCount(1);
+        timeline.play();
+        }
+    private void yourTurn(){
+        board.getBoxes().forEach(box -> {
+            box.setOnMouseEntered(t -> box.setStyle("-fx-opacity:0.5;"));
+            box.setOnMouseExited(t -> box.setStyle("-fx-opacity:1;"));
+            box.setOnMouseClicked(t -> {
+                if (yourDiceNumber == 0 && turn%4 == 1) {
+                    yourDiceNumber = dice()[board.getBoxes().indexOf(box)];
+                    box.setImage(new Image(Main.class.getResource("image/dice" + yourDiceNumber+ ".png").toString()));
+                    // remove reaction when user was picked an item
+                    board.getBoxes().forEach(box2 -> box2.setOnMouseEntered(t2 -> box2.setStyle("-fx-opacity:1;")));
+                }
+            });
+
+
+        });
 
     }
 

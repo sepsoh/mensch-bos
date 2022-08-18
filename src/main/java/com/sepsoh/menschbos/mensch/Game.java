@@ -16,23 +16,23 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Game {
-    private int turn  = 0;
+    private int turn  = -1;
 
     private Board board;
     private int yourDiceNumber = 0;
-
+    private boolean hasGift = false;
     public void start(Board board, String yourChar,int gameSpeedMils){
         this.board = board;
 
-        Character.characters.forEach((charName, chr) -> {
+        Character.characters.forEach(chr -> {
             // set yourChar onClick :
-            if(charName.startsWith(yourChar)) {
-                chr.getImg().setOnMouseClicked(event -> clickedOn(charName));
+            if(chr.getName().startsWith(yourChar)) {
+                chr.getImg().setOnMouseClicked(event -> clickedOn(chr));
                 chr.getImg().setOnMouseEntered(event -> chr.getImg().setOpacity(0.5));
                 chr.getImg().setOnMouseExited(event -> chr.getImg().setOpacity(1));
             }
             //initialize first place :
-            changeCharPosition(charName,chr.getPath().getCurrentPosition());
+            changeCharPosition(chr,chr.getPath().getCurrentPosition());
         });
 
         next();
@@ -41,11 +41,11 @@ public class Game {
 
 
     }
-    private void clickedOn(String on) {
+    private void clickedOn(Character chr) {
         if(yourDiceNumber != 0) {
-            ArrayList<Position> pos = Character.characters.get(on).getPath().getPosition(yourDiceNumber);
+            ArrayList<Position> pos = chr.getPath().getPosition(yourDiceNumber);
             if(!pos.isEmpty())
-                changeCharPosition(on,pos.get(pos.size()-1));
+                changeCharPosition(chr,pos.get(pos.size()-1));
 
             yourDiceNumber = 0;
             next();
@@ -62,9 +62,9 @@ public class Game {
         board.getBoxes().forEach(box->box.setImage(new Image(Main.class.getResource("image/hide.png").toString())));
 
     }
-    private void changeCharPosition(String charName,Position pos){
+    private void changeCharPosition(Character chr,Position pos){
         if(pos != null) {
-            ImageView img = Character.characters.get(charName).getImg();
+            ImageView img = chr.getImg();
             board.getGridPane().getChildren().remove(img);
             board.getGridPane().add(img, pos.getColumn(), pos.getRow());
             GridPane.setHalignment(img, HPos.CENTER);
@@ -73,16 +73,16 @@ public class Game {
         }
     }
     private void changeHelperLabel(){
-        if(turn%4 ==1){
+        if(turn%4 ==0){
             board.getHelperLabel().getStyleClass().setAll("alert","alert-info");
             board.getHelperLabel().setText("It`s Your Turn ...");
-        } else if (turn%4 ==2) {
+        } else if (turn%4 ==1) {
             board.getHelperLabel().getStyleClass().setAll("alert","alert-warning");
             board.getHelperLabel().setText("Yellow`s Turn ...");
-        } else if (turn%4 ==3) {
+        } else if (turn%4 ==2) {
             board.getHelperLabel().getStyleClass().setAll("alert","alert-success");
             board.getHelperLabel().setText("Green`s Turn ...");
-        } else if (turn%4 ==0) {
+        } else if (turn%4 ==3) {
             board.getHelperLabel().getStyleClass().setAll("alert","alert-danger");
             board.getHelperLabel().setText("Red`s Turn ...");
         }
@@ -95,11 +95,13 @@ public class Game {
         return dice;
     }
     private void next(){
-        turn++;
+        if (!hasGift)
+            turn++;
+
         hideAllBoxes();
         changeHelperLabel();
 
-        if(turn%4==1)
+        if(turn%4==0)
             yourTurn();
         else
             botsTurn();
@@ -112,9 +114,13 @@ public class Game {
     private void botsTurn(){
         ImageView box = board.getBoxes().get(ThreadLocalRandom.current().nextInt(0, 5 + 1));
         int dice = dice()[board.getBoxes().indexOf(box)];
+        hasGift = dice == 6;
         box.setImage(new Image(Main.class.getResource("image/dice" + dice + ".png").toString()));
-        //changeCharPosition(Character.characters.);
 
+
+
+        //Character chr = (Character) Character.characters.values().toArray()[ThreadLocalRandom.current().nextInt((turn%4)*4,(turn%4)*4+4)];
+        //changeCharPosition(chr.getCharName(),);
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),event -> next()));
         timeline.setCycleCount(1);
         timeline.play();
@@ -124,8 +130,13 @@ public class Game {
             box.setOnMouseEntered(t -> box.setStyle("-fx-opacity:0.5;"));
             box.setOnMouseExited(t -> box.setStyle("-fx-opacity:1;"));
             box.setOnMouseClicked(t -> {
-                if (yourDiceNumber == 0 && turn%4 == 1) {
+                if (yourDiceNumber == 0 && turn%4 == 0) {
                     yourDiceNumber = dice()[board.getBoxes().indexOf(box)];
+                    if (yourDiceNumber == 6)
+                        hasGift = true;
+                    else
+                        hasGift = false;
+
                     box.setImage(new Image(Main.class.getResource("image/dice" + yourDiceNumber+ ".png").toString()));
                     // remove reaction when user was picked an item
                     board.getBoxes().forEach(box2 -> box2.setOnMouseEntered(t2 -> box2.setStyle("-fx-opacity:1;")));

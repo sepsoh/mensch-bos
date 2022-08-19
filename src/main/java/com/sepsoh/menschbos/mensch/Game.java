@@ -74,21 +74,7 @@ public class Game {
             System.out.println("position is null");
         }
     }
-    private void changeHelperLabel(){
-        if(turn%4 ==0){
-            board.getHelperLabel().getStyleClass().setAll("alert","alert-info");
-            board.getHelperLabel().setText("It`s Your Turn ...");
-        } else if (turn%4 ==1) {
-            board.getHelperLabel().getStyleClass().setAll("alert","alert-warning");
-            board.getHelperLabel().setText("Yellow`s Turn ...");
-        } else if (turn%4 ==2) {
-            board.getHelperLabel().getStyleClass().setAll("alert","alert-success");
-            board.getHelperLabel().setText("Green`s Turn ...");
-        } else if (turn%4 ==3) {
-            board.getHelperLabel().getStyleClass().setAll("alert","alert-danger");
-            board.getHelperLabel().setText("Red`s Turn ...");
-        }
-    }
+
     private void changeHelperLabel(String msg){
         if(turn%4 ==0){
             board.getHelperLabel().getStyleClass().setAll("alert","alert-info");
@@ -104,9 +90,7 @@ public class Game {
             board.getHelperLabel().setText(msg);
         }
     }
-
-
-        private Integer[] dice(){
+    private Integer[] dice(){
         Integer[] dice = {1,2,3,4,5,6};
         List<Integer> intList = Arrays.asList(dice);
         Collections.shuffle(intList);
@@ -121,7 +105,7 @@ public class Game {
             turn++;
 
         hideAllBoxes();
-        changeHelperLabel();
+        board.changeHelperLabel(turn);
 
         if(turn%4==0)
             yourTurn();

@@ -178,15 +178,19 @@ public class FourPlayerPath implements Path {
 
     }
     private boolean isCellFree(int length){
+        //check that first dice is 6
+        if(index <4 && length != 6)
+            return false;
+
+        // check that it does not hit another
         int indexCopy = index;
         int newIndex ;
-
         for(int i= 0 ;i<length; i++)
             indexUp();
         newIndex = index;
         index = indexCopy;
         AtomicBoolean ret = new AtomicBoolean(false);
-        Character.characters.forEach((a, chr)-> {
+        Character.characters.forEach(chr-> {
             if(chr.getPath().getCurrentPosition().isEqual(getRoute().get(newIndex)));
                 ret.set(true);
         });
@@ -196,20 +200,26 @@ public class FourPlayerPath implements Path {
     public ArrayList<Position> getPosition(int length){
         ArrayList<Position> ret = new ArrayList<>();
         if(isCellFree(length)) {
+            if(length==6 && index <4)
+                length =1;
             for (int i = 0; i < length; i++)
                 ret.add(getNextPosition());
+
         }
             return ret;
     }
+
+    @Override
+    public boolean isInBase() {
+        return index<4;
+    }
+
     public Position getNextPosition() {
 
         return getRoute().get(indexUp());
     }
 
-    @Override
-    public int getIndex() {
-        return index;
-    }
+
     private int indexUp(){
         if(index<4)
             return index =4;

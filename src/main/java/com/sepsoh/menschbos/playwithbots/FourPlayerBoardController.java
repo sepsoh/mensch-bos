@@ -47,7 +47,7 @@ public class FourPlayerBoardController implements Board {
         game.buildChar("redChar3",red);
         game.buildChar("redChar4",red);
 
-        game.start(this,"blue",200);
+        game.start(this,"blue");
 
 
 
@@ -90,6 +90,31 @@ public class FourPlayerBoardController implements Board {
             getHelperLabel().setText("Red`s Turn ...");
         }
     }
+    public void changeHelperLabel(int turn,String msg){
+        if(turn%4 ==0){
+            getHelperLabel().getStyleClass().setAll("alert","alert-info");
+            getHelperLabel().setText(msg);
+        } else if (turn%4 ==1) {
+            getHelperLabel().getStyleClass().setAll("alert","alert-warning");
+            getHelperLabel().setText(msg);
+        } else if (turn%4 ==2) {
+            getHelperLabel().getStyleClass().setAll("alert","alert-success");
+            getHelperLabel().setText(msg);
+        } else if (turn%4 ==3) {
+            getHelperLabel().getStyleClass().setAll("alert","alert-danger");
+            getHelperLabel().setText(msg);
+        }
+    }
 
-
+    @Override
+    public void playerWon(int id) {
+        if (id ==0)
+            changeHelperLabel(id,"You Win ...");
+        else if (id ==1)
+            changeHelperLabel(id,"Yellow's Win ...");
+        else if (id ==2)
+            changeHelperLabel(id,"Green's Win ...");
+        else if (id == 3)
+            changeHelperLabel(id,"Red's Win ...");
+    }
 }

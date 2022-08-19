@@ -11,4 +11,7 @@ public interface Board {
     Label getHelperLabel();
     GridPane getGridPane();
     void changeHelperLabel(int turn);
+    void changeHelperLabel(int turn,String msg);
+    void playerWon(int id);
+
 }

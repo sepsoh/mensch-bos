@@ -109,7 +109,7 @@ public class Game {
 
 
         if(!hasGift){
-            lastMovedCharId = ThreadLocalRandom.current().nextInt((turn%4)*4,(turn%4)*4+4);
+            lastMovedCharId = ThreadLocalRandom.current().nextInt((turn%playerCount)*4,(turn%playerCount)*4+4);
 
             // Help to bots to move character that isn't in base when its dice isn't 6 [5 trys to help]
             if(dice !=6)
@@ -177,11 +177,11 @@ public class Game {
         boolean areInTarget = true;
         int winingTeam = -1;
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < playerCount*4; i++) {
             areInTarget = areInTarget && Character.characters.get(i).getPath().isInTarget();
-            if (i % playerCount == 3 /* last char in each team */ && areInTarget)
+            if (i % 4 == 3 /* last char in each team */ && areInTarget)
                 winingTeam = i / playerCount;
-            else if (i % playerCount == 3)
+            else if (i % 4 == 3)
                 areInTarget = true;
 
         }

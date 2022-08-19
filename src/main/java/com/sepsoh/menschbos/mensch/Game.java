@@ -138,8 +138,15 @@ public class Game {
         box.setImage(new Image(Main.class.getResource("image/dice" + dice + ".png").toString()));
 
 
-        if(!hasGift)
+        if(!hasGift){
             lastMovedCharId = ThreadLocalRandom.current().nextInt((turn%4)*4,(turn%4)*4+4);
+
+            // Help to bots to move character that isn't in base when its dice isn't 6 [5 trys to help]
+            if(dice !=6)
+                for(int i=0; i<5;i++)
+                    if(Character.characters.get(lastMovedCharId).getPath().isInBase())
+                        lastMovedCharId = ThreadLocalRandom.current().nextInt((turn%4)*4,(turn%4)*4+4);
+        }
         hasGift = dice == 6;
 
         Character chr = Character.characters.get(lastMovedCharId);

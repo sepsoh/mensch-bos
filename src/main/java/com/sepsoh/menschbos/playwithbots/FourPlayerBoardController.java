@@ -75,5 +75,21 @@ public class FourPlayerBoardController implements Board {
         return gridPane;
     }
 
+    public void changeHelperLabel(int turn){
+        if(turn%4 ==0){
+            getHelperLabel().getStyleClass().setAll("alert","alert-info");
+            getHelperLabel().setText("It`s Your Turn ...");
+        } else if (turn%4 ==1) {
+            getHelperLabel().getStyleClass().setAll("alert","alert-warning");
+            getHelperLabel().setText("Yellow`s Turn ...");
+        } else if (turn%4 ==2) {
+            getHelperLabel().getStyleClass().setAll("alert","alert-success");
+            getHelperLabel().setText("Green`s Turn ...");
+        } else if (turn%4 ==3) {
+            getHelperLabel().getStyleClass().setAll("alert","alert-danger");
+            getHelperLabel().setText("Red`s Turn ...");
+        }
+    }
+
 
 }

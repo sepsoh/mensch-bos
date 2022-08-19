@@ -214,6 +214,11 @@ public class FourPlayerPath implements Path {
         return index<4;
     }
 
+    @Override
+    public boolean isInTarget() {
+        return index>43 && index<48;
+    }
+
     public Position getNextPosition() {
 
         return getRoute().get(indexUp());

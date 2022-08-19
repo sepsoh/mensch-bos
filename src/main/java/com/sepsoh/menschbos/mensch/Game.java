@@ -113,6 +113,9 @@ public class Game {
         return dice;
     }
     private void next(){
+        if(isGameOvered())
+            return;
+
         if (!hasGift)
             turn++;
 
@@ -123,7 +126,6 @@ public class Game {
             yourTurn();
         else
             botsTurn();
-
 
         System.out.println("Turn : "+turn);
 
@@ -189,6 +191,31 @@ public class Game {
             if(!Character.characters.get(i).getPath().isInBase())
                 return true;
         return false;
+    }
+    private boolean isGameOvered(){
+        boolean areInTarget = true;
+        int winingTeam = -1;
+
+        for(int i=0;i<16;i++){
+            areInTarget = areInTarget && Character.characters.get(i).getPath().isInTarget();
+            if(i%4 ==3 /* last char in each team */ && areInTarget)
+                winingTeam = i/4;
+            else if(i%4 ==3)
+                areInTarget =true;
+
+        }
+        if (winingTeam ==0)
+            changeHelperLabel("You Win ...");
+        else if (winingTeam ==1)
+            changeHelperLabel("Yellow's Win ...");
+        else if (winingTeam ==2)
+            changeHelperLabel("Green's Win ...");
+        else if (winingTeam == 3)
+            changeHelperLabel("Red's Win ...");
+        else
+            return false;
+        return true;
+
     }
 
 }

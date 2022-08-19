@@ -18,14 +18,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Game {
     private int turn  = -1;
-
+    private int playerCount;
     private Board board;
     private int yourDiceNumber = 0;
     private boolean hasGift = false;
     private int lastMovedCharId ;
-    public void start(Board board, String yourChar,int gameSpeedMils){
+    public void start(Board board, String yourChar){
         this.board = board;
-
+        this.playerCount = Character.characters.size()/4;
         Character.characters.forEach(chr -> {
             // set yourChar onClick :
             if(chr.getName().startsWith(yourChar)) {
@@ -75,21 +75,7 @@ public class Game {
         }
     }
 
-    private void changeHelperLabel(String msg){
-        if(turn%4 ==0){
-            board.getHelperLabel().getStyleClass().setAll("alert","alert-info");
-            board.getHelperLabel().setText(msg);
-        } else if (turn%4 ==1) {
-            board.getHelperLabel().getStyleClass().setAll("alert","alert-warning");
-            board.getHelperLabel().setText(msg);
-        } else if (turn%4 ==2) {
-            board.getHelperLabel().getStyleClass().setAll("alert","alert-success");
-            board.getHelperLabel().setText(msg);
-        } else if (turn%4 ==3) {
-            board.getHelperLabel().getStyleClass().setAll("alert","alert-danger");
-            board.getHelperLabel().setText(msg);
-        }
-    }
+
     private Integer[] dice(){
         Integer[] dice = {1,2,3,4,5,6};
         List<Integer> intList = Arrays.asList(dice);
@@ -107,7 +93,7 @@ public class Game {
         hideAllBoxes();
         board.changeHelperLabel(turn);
 
-        if(turn%4==0)
+        if(turn%playerCount==0)
             yourTurn();
         else
             botsTurn();
@@ -148,7 +134,7 @@ public class Game {
             box.setOnMouseEntered(t -> box.setStyle("-fx-opacity:0.5;"));
             box.setOnMouseExited(t -> box.setStyle("-fx-opacity:1;"));
             box.setOnMouseClicked(t -> {
-                if (yourDiceNumber == 0 && turn%4 == 0) {
+                if (yourDiceNumber == 0 && turn%playerCount == 0) {
                     yourDiceNumber = dice()[board.getBoxes().indexOf(box)];
                     if (yourDiceNumber == 6)
                         hasGift = true;
@@ -187,29 +173,24 @@ public class Game {
                 return true;
         return false;
     }
-    private boolean isGameOvered(){
+    private boolean isGameOvered() {
         boolean areInTarget = true;
         int winingTeam = -1;
 
-        for(int i=0;i<16;i++){
+        for (int i = 0; i < 16; i++) {
             areInTarget = areInTarget && Character.characters.get(i).getPath().isInTarget();
-            if(i%4 ==3 /* last char in each team */ && areInTarget)
-                winingTeam = i/4;
-            else if(i%4 ==3)
-                areInTarget =true;
+            if (i % playerCount == 3 /* last char in each team */ && areInTarget)
+                winingTeam = i / playerCount;
+            else if (i % playerCount == 3)
+                areInTarget = true;
 
         }
-        if (winingTeam ==0)
-            changeHelperLabel("You Win ...");
-        else if (winingTeam ==1)
-            changeHelperLabel("Yellow's Win ...");
-        else if (winingTeam ==2)
-            changeHelperLabel("Green's Win ...");
-        else if (winingTeam == 3)
-            changeHelperLabel("Red's Win ...");
-        else
+        if(winingTeam != -1){
+            board.playerWon(winingTeam);
+            return true;
+        }else
             return false;
-        return true;
+
 
     }
 

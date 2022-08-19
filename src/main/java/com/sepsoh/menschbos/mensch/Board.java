@@ -10,4 +10,5 @@ public interface Board {
     ArrayList<ImageView> getBoxes();
     Label getHelperLabel();
     GridPane getGridPane();
+    void changeHelperLabel(int turn);
 }

@@ -9,6 +9,7 @@ public interface Path {
 
     ArrayList<Position> getPosition(int length);
     boolean isInBase();
+    boolean isInTarget();
 
 
 }

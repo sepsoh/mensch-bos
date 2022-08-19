@@ -9,17 +9,10 @@ import java.util.HashMap;
 public class Character {
     private ImageView img;
     private String charName;
-
-    public String getName() {
-        return name;
-    }
-
     private String name;
-
-
     private Path path ;
-
     public static ArrayList<Character> characters = new ArrayList<>();
+
     public Character(String name,String charName,ImageView img) {
         this.img = img;
         this.charName = charName;
@@ -29,6 +22,9 @@ public class Character {
     }
     public String getCharName() {
         return charName;
+    }
+    public String getName() {
+        return name;
     }
     public ImageView getImg() {
         return img;

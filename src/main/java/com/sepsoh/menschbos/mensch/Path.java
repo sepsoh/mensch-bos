@@ -7,9 +7,8 @@ public interface Path {
 
     Position getNextPosition();
 
-    int getIndex();
-
     ArrayList<Position> getPosition(int length);
+    boolean isInBase();
 
 
 }

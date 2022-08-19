@@ -22,6 +22,7 @@ public class Game {
     private Board board;
     private int yourDiceNumber = 0;
     private boolean hasGift = false;
+    private int lastMovedCharId ;
     public void start(Board board, String yourChar,int gameSpeedMils){
         this.board = board;
 
@@ -127,18 +128,21 @@ public class Game {
         else
             botsTurn();
 
-        System.out.println("Turn : "+turn);
+        //System.out.println("Turn : "+turn);
 
     }
     private void botsTurn(){
         ImageView box = board.getBoxes().get(ThreadLocalRandom.current().nextInt(0, 5 + 1));
         int dice = dice()[board.getBoxes().indexOf(box)];
-        hasGift = dice == 6;
 
         box.setImage(new Image(Main.class.getResource("image/dice" + dice + ".png").toString()));
 
 
-        Character chr = Character.characters.get(ThreadLocalRandom.current().nextInt((turn%4)*4,(turn%4)*4+4));
+        if(!hasGift)
+            lastMovedCharId = ThreadLocalRandom.current().nextInt((turn%4)*4,(turn%4)*4+4);
+        hasGift = dice == 6;
+
+        Character chr = Character.characters.get(lastMovedCharId);
         ArrayList<Position> pos = chr.getPath().getPosition(dice);
         if(!pos.isEmpty())
             changeCharPosition(chr,pos.get(pos.size()-1));

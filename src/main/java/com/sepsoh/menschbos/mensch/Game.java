@@ -161,13 +161,34 @@ public class Game {
                     box.setImage(new Image(Main.class.getResource("image/dice" + yourDiceNumber+ ".png").toString()));
                     // remove reaction when user was picked an item
                     board.getBoxes().forEach(box2 -> box2.setOnMouseEntered(t2 -> box2.setStyle("-fx-opacity:1;")));
+
+                    if(!areYouQualified()){
+                        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2),event ->
+                        {
+                            yourDiceNumber = 0;
+                            next();
+                        }));
+                        timeline.setCycleCount(1);
+                        timeline.play();
+
+                    }
+
                 }
             });
 
 
         });
 
+
+
     }
 
+    private boolean areYouQualified(){
+        // in first, you must take 6 dice number to bring a character to the game.
+        for(int i=0;i<4;i++)
+            if(!Character.characters.get(i).getPath().isInBase())
+                return true;
+        return false;
+    }
 
 }
